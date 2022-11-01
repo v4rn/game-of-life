@@ -1,5 +1,5 @@
-const WORLD_SIZE = 50;
-const DIM = 400;
+const WORLD_SIZE = 100;
+const DIM = 800;
 const CELL_SIZE = Math.floor(DIM / WORLD_SIZE);
 const TOTAL_CELLS = WORLD_SIZE * CELL_SIZE;
 const FRAME_SPEED = 500;
@@ -26,6 +26,16 @@ function clear_cells() {
   }
 }
 
+function addEventListeners() {
+  canvas.addEventListener("mousedown", selectCell);
+  canvas.addEventListener("mousemove", selectMultipleCells);
+}
+
+function removeEventListeners() {
+  canvas.removeEventListener("mousedown", selectCell);
+  canvas.removeEventListener("mousemove", selectMultipleCells);
+}
+
 function init_world() {
   canvas = document.getElementById("canvas");
   canvas.width = DIM;
@@ -36,7 +46,7 @@ function init_world() {
   clear_cells();
 
   // add events
-  canvas.addEventListener("mousedown", selectCell);
+  addEventListeners();
 }
 
 function start_world() {
@@ -44,12 +54,18 @@ function start_world() {
   document.getElementById("start_button").disabled = true;
   document.getElementById("stop_button").disabled = false;
   animation_event = setInterval(incr_world, FRAME_SPEED);
+
+  // remove mouse events
+  removeEventListeners();
 }
 
 function stop_world() {
   console.log("stoping world!");
   document.getElementById("start_button").disabled = false;
   document.getElementById("stop_button").disabled = true;
+  addEventListeners();
+
+  // add mouse events
   clearInterval(animation_event);
 }
 
@@ -102,4 +118,7 @@ function selectCell(event) {
   ctx.strokeRect(CELL_SIZE * cell_j, CELL_SIZE * cell_i, CELL_SIZE, CELL_SIZE);
 
   return [cell_i, cell_j];
+}
+
+function selectMultipleCells(event) {
 }
