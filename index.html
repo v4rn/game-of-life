@@ -7,24 +7,21 @@
     <script src="canvas_wrapper.js"></script>
     <script src="world.js"></script>
     <script src="app.js"></script>
-    <style>
-      div {
-        display: flex;
-        justify-content: center;
-      }
-    </style>
+    <link rel="stylesheet" href="index.css">
   </head>
   <body onload="init_world();">
     <div>
     <h1>Game of life simulation</h1>
     </div>
-    <div>
-      <canvas id="canvas"></canvas>
-    </div>
-    <div>
-      <button id="start_button" onclick="start_world();">Start</button>
-      <button id="stop_button" onclick="stop_world();" disabled>Stop</button>
-      <button id="clear_button" onclick="clear_world();">Clear</button>
+    <div class="main_container">
+      <div>
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="main_buttons_container">
+        <div class="button_div"><button class="button_class" id="start_button" onclick="start_world();">Start</button></div>
+        <div class="button_div"><button class="button_class" id="stop_button" onclick="stop_world();" disabled>Stop</button></div>
+        <div class="button_div"><button class="button_class" id="clear_button" onclick="clear_world();">Clear</button></div>
+      </div>
     </div>
   </body>
 </html>

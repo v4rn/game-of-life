@@ -1,6 +1,6 @@
 // contants
 const FRAME_SPEED = 500;
-const TOTAL_CELLS = 200;
+const TOTAL_CELLS = 100;
 const CANVAS_SIZE = 800;
 
 // global vars
